@@ -14,7 +14,7 @@ export const AllPostsStackNavigator = () => {
         name="AllPosts"
         component={MainScreen}
         options={({ navigation }) => ({
-          title: 'Главная',
+          title: 'Все посты',
           headerRight: () => (
             <TouchableOpacity onPress={() => { navigation.navigate('Create') }}>
               <MaterialIcons
