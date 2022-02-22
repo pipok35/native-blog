@@ -37,9 +37,7 @@ export default function CreateScreen({ navigation }) {
 
   return (
     <ScrollView>
-      <TouchableWithoutFeedback
-        onPress={() => Keyboard.dismiss()}
-      >
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={styles.wrapper}>
           <Text style={styles.title}>Создай новый пост</Text>
           <TextInput

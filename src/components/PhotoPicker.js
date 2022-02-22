@@ -1,10 +1,4 @@
-import {
-  View,
-  StyleSheet,
-  Button,
-  Image,
-  Alert,
-} from "react-native";
+import { View, StyleSheet, Button, Image, Alert } from "react-native";
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 
@@ -35,9 +29,7 @@ export const PhotoPicker = ({ onPick }) => {
   return (
     <View style={styles.wrapper}>
       <Button title="Добавить изображение" onPress={takePhoto} />
-      {image && (
-        <Image style={styles.image} source={{ uri: image }} />
-      )}
+      {image && <Image style={styles.image} source={{ uri: image }} />}
     </View>
   );
 };
