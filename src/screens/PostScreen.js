@@ -1,18 +1,31 @@
-import { StyleSheet, Text, View, Image, Button, ScrollView, Alert, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Button,
+  ScrollView,
+  Alert,
+  TouchableOpacity,
+} from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleBooked, removePost } from '../store/postsSlice'
+import { toggleFetchPost, deleteFetchPost } from '../store/postsSlice'
 
 export default function PostScreen({ navigation, route }) {
   const dispatch = useDispatch()
   const { postId } = route.params
 
-  const post = useSelector(state => state.posts.allPosts.find(p => p.id === postId))
-  const booked = useSelector(state => state.posts.bookedPosts.some(p => p.id === postId))
+  const post = useSelector((state) =>
+    state.posts.allPosts.find((p) => p.id === postId)
+  )
+  const booked = useSelector((state) =>
+    state.posts.bookedPosts.some((p) => p.id === postId)
+  )
 
   const toggleHandler = () => {
-    dispatch(toggleBooked({ postId }))
+    dispatch(toggleFetchPost(post))
   }
 
   React.useLayoutEffect(() => {
@@ -27,24 +40,25 @@ export default function PostScreen({ navigation, route }) {
           />
         </TouchableOpacity>
       ),
-    });
-  }, [toggleHandler]);
+    })
+  }, [toggleHandler])
 
   const removeHandler = () => {
     Alert.alert(
-      "Удаление",
-      "Вы уверены, что хотите удалить пост?",
+      'Удаление',
+      'Вы уверены, что хотите удалить пост?',
       [
-        { text: "Отмена" },
+        { text: 'Отмена' },
         {
-          text: "Да", onPress: () => {
-            dispatch(removePost({ postId }))
+          text: 'Да',
+          onPress: () => {
+            dispatch(deleteFetchPost(postId))
             navigation.navigate('AllPosts')
-          }
-        }
+          },
+        },
       ],
       { cancelable: false }
-    );
+    )
   }
 
   if (!post) {
@@ -55,9 +69,7 @@ export default function PostScreen({ navigation, route }) {
     <ScrollView>
       <Image style={styles.image} source={{ uri: post.img }} />
       <View style={styles.textWrapper}>
-        <Text style={styles.text}>
-          {post.text}
-        </Text>
+        <Text style={styles.text}>{post.text}</Text>
       </View>
       <Button color={'#eb4034'} title='Удалить' onPress={removeHandler} />
     </ScrollView>
@@ -67,12 +79,12 @@ export default function PostScreen({ navigation, route }) {
 const styles = StyleSheet.create({
   image: {
     width: '100%',
-    height: 200
+    height: 200,
   },
   textWrapper: {
-    padding: 10
+    padding: 10,
   },
   text: {
-    fontFamily: 'rb-regular'
-  }
+    fontFamily: 'rb-regular',
+  },
 })

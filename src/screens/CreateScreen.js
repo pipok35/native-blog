@@ -7,33 +7,35 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   Keyboard,
-} from "react-native";
-import React, { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { addPost } from "../store/postsSlice";
-import { PhotoPicker } from "../components/PhotoPicker";
+} from 'react-native'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+const shortid = require('shortid')
+import { addFetchPost } from '../store/postsSlice'
+import { PhotoPicker } from '../components/PhotoPicker'
 
 export default function CreateScreen({ navigation }) {
-  const dispatch = useDispatch();
-  const [text, setText] = useState("");
-  const [img, setImg] = useState();
+  const dispatch = useDispatch()
+  const [text, setText] = useState('')
+  const [img, setImg] = useState()
 
   const saveHandler = () => {
     const post = {
+      id: shortid.generate(),
       date: new Date().toJSON(),
       text: text,
       img: img,
       booked: false,
-    };
+    }
 
-    dispatch(addPost(post));
-    navigation.navigate("AllPosts");
-    setText("");
-  };
+    dispatch(addFetchPost(post))
+    navigation.navigate('AllPosts')
+    setText('')
+  }
 
   const photoPickHendler = (uri) => {
-    setImg(uri);
-  };
+    setImg(uri)
+  }
 
   return (
     <ScrollView>
@@ -42,22 +44,22 @@ export default function CreateScreen({ navigation }) {
           <Text style={styles.title}>Создай новый пост</Text>
           <TextInput
             style={styles.textArea}
-            placeholder="Введите текст поста"
+            placeholder='Введите текст поста'
             multiline
             value={text}
             onChangeText={setText}
           />
           <PhotoPicker onPick={photoPickHendler} />
           <Button
-            title="Создать пост"
-            color="#303f9f"
+            title='Создать пост'
+            color='#303f9f'
             onPress={saveHandler}
             disabled={!text || !img}
           />
         </View>
       </TouchableWithoutFeedback>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -67,10 +69,10 @@ const styles = StyleSheet.create({
   title: {
     marginVertical: 5,
     fontSize: 20,
-    fontFamily: "rb-bold",
-    textAlign: "center",
+    fontFamily: 'rb-bold',
+    textAlign: 'center',
   },
   textArea: {
     padding: 10,
   },
-});
+})

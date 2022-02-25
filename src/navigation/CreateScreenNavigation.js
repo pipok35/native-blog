@@ -15,14 +15,19 @@ export const CreateScreenNavigation = () => {
         options={({ navigation }) => ({
           title: 'Создать',
           headerLeft: () => (
-            <TouchableOpacity style={{ paddingRight: 20 }} onPress={() => { navigation.toggleDrawer() }}>
+            <TouchableOpacity
+              style={{ paddingRight: 20 }}
+              onPress={() => {
+                navigation.toggleDrawer()
+              }}
+            >
               <MaterialIcons
-                name="menu"
+                name='menu'
                 size={24}
                 color={Platform.OS === 'android' ? '#fff' : '#303f9f'}
               />
             </TouchableOpacity>
-          )
+          ),
         })}
       />
     </Stack.Navigator>

@@ -16,19 +16,25 @@ export const BookedPostsStackNavigator = () => {
         options={({ navigation }) => ({
           title: 'Избранное',
           headerLeft: () => (
-            <TouchableOpacity style={{ paddingRight: 20 }} onPress={() => { navigation.toggleDrawer() }}>
+            <TouchableOpacity
+              style={{ paddingRight: 20 }}
+              onPress={() => {
+                navigation.toggleDrawer()
+              }}
+            >
               <MaterialIcons
-                name="menu"
+                name='menu'
                 size={24}
                 color={Platform.OS === 'android' ? '#fff' : '#303f9f'}
               />
             </TouchableOpacity>
-          )
-        })} />
+          ),
+        })}
+      />
       <Stack.Screen
         name='Post'
         component={PostScreen}
-        // Опции в PostScreen(setOptions) 
+        // Опции в PostScreen(setOptions)
       />
     </Stack.Navigator>
   )

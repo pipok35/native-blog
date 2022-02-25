@@ -9,35 +9,31 @@ export const TabsForPosts = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false, tabBarActiveTintColor: '#303f9f',
+        headerShown: false,
+        tabBarActiveTintColor: '#303f9f',
         tabBarInactiveTintColor: 'gray',
-      }}>
+      }}
+    >
       <Tab.Screen
         options={{
           tabBarIcon: ({ color }) => {
-            return <MaterialIcons
-              name="folder"
-              size={24}
-              color={color}
-            />
+            return <MaterialIcons name='folder' size={24} color={color} />
           },
-          tabBarLabel: 'Все'
+          tabBarLabel: 'Все',
         }}
-        name="TabAllPosts"
-        component={AllPostsStackNavigator} />
+        name='TabAllPosts'
+        component={AllPostsStackNavigator}
+      />
       <Tab.Screen
         options={{
           tabBarIcon: ({ color }) => {
-            return <MaterialIcons
-              name="star"
-              size={24}
-              color={color}
-            />
+            return <MaterialIcons name='star' size={24} color={color} />
           },
-          tabBarLabel: 'Избранное'
+          tabBarLabel: 'Избранное',
         }}
-        name="TabBooked"
-        component={BookedPostsStackNavigator} />
+        name='TabBooked'
+        component={BookedPostsStackNavigator}
+      />
     </Tab.Navigator>
   )
 }

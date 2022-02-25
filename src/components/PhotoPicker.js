@@ -7,14 +7,14 @@ export const PhotoPicker = ({ onPick }) => {
 
   const takePhoto = async () => {
     const permissionResult =
-      await ImagePicker.requestMediaLibraryPermissionsAsync();
+      await ImagePicker.requestCameraPermissionsAsync();
 
     if (permissionResult.granted === false) {
       Alert.alert("Ошибка, Вы не предоставили прав");
       return;
     }
 
-    const result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchCameraAsync({
       allowsEditing: false,
       aspect: [16, 9],
       quality: 0.9,

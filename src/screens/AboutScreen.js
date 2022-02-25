@@ -5,7 +5,10 @@ export default function AboutScreen() {
   return (
     <View style={styles.center}>
       <Text style={styles.text}>Приложение для блога</Text>
-      <Text style={styles.text}>Версия приложения <Text style={[styles.text, { fontFamily: 'rb-bold' }]}>1.0.2</Text></Text>
+      <Text style={styles.text}>
+        Версия приложения{' '}
+        <Text style={[styles.text, { fontFamily: 'rb-bold' }]}>1.0.2</Text>
+      </Text>
     </View>
   )
 }
@@ -17,6 +20,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 })

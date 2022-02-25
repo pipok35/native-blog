@@ -25,13 +25,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pipok.rn-blog-pipok",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.pipok.rn_blog_pipok",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"

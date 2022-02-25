@@ -4,15 +4,13 @@ import PostsList from '../components/PostsList'
 
 export default function BookedScreen({ navigation }) {
   const openPostHandler = (post) => {
-    navigation.navigate('Post',
-      {
-        postId: post.id,
-        date: new Date(post.date).toLocaleDateString(),
-      }
-    )
+    navigation.navigate('Post', {
+      postId: post.id,
+      date: new Date(post.date).toLocaleDateString(),
+    })
   }
 
-  const bookedPosts = useSelector(state => state.posts.bookedPosts)
+  const bookedPosts = useSelector((state) => state.posts.bookedPosts)
 
-  return <PostsList data={bookedPosts} onOpen={openPostHandler}/>
+  return <PostsList data={bookedPosts} onOpen={openPostHandler} />
 }

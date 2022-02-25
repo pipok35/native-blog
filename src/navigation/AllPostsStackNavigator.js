@@ -11,32 +11,41 @@ export const AllPostsStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={optionsForNavigator}>
       <Stack.Screen
-        name="AllPosts"
+        name='AllPosts'
         component={MainScreen}
         options={({ navigation }) => ({
           title: 'Все посты',
           headerRight: () => (
-            <TouchableOpacity onPress={() => { navigation.navigate('Create') }}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Create')
+              }}
+            >
               <MaterialIcons
-                name="add-a-photo"
+                name='add-a-photo'
                 size={24}
                 color={Platform.OS === 'android' ? '#fff' : '#303f9f'}
               />
             </TouchableOpacity>
           ),
           headerLeft: () => (
-            <TouchableOpacity style={{ paddingRight: 20 }} onPress={() => { navigation.toggleDrawer() }}>
+            <TouchableOpacity
+              style={{ paddingRight: 20 }}
+              onPress={() => {
+                navigation.toggleDrawer()
+              }}
+            >
               <MaterialIcons
-                name="menu"
+                name='menu'
                 size={24}
                 color={Platform.OS === 'android' ? '#fff' : '#303f9f'}
               />
             </TouchableOpacity>
-          )
+          ),
         })}
       />
       <Stack.Screen
-        name="Post"
+        name='Post'
         component={PostScreen}
         // Опции в PostScreen(setOptions)
       />

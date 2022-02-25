@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { loadPosts } from '../store/postsSlice'
+import { fetchPosts } from '../store/postsSlice'
 import PostsList from '../components/PostsList'
 
 export default function MainScreen({ navigation }) {
+  const dispatch = useDispatch()
+
   const openPostHandler = (post) => {
-    navigation.navigate('Post',
-      {
-        postId: post.id,
-        date: new Date(post.date).toLocaleDateString(),
-      }
-    )
+    navigation.navigate('Post', {
+      postId: post.id,
+      date: new Date(post.date).toLocaleDateString(),
+    })
   }
 
-  const dispatch = useDispatch()
-  const allPosts = useSelector(state => state.posts.allPosts)
-
   useEffect(() => {
-    dispatch(loadPosts())
-  }, [])
+    dispatch(fetchPosts())
+  }, [dispatch])
 
-  return <PostsList data={allPosts} onOpen={openPostHandler}/>
+  const allPosts = useSelector((state) => state.posts.allPosts)
 
+  return <PostsList data={allPosts} onOpen={openPostHandler} />
 }

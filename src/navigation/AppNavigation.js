@@ -4,7 +4,6 @@ import { TabsForPosts } from './TabsForPosts'
 import { AboutScreenNavigation } from './AboutScreenNavigation'
 import { CreateScreenNavigation } from './CreateScreenNavigation'
 
-
 const MainNavigatorDrawer = createDrawerNavigator()
 
 export const AppNavigation = () => {
@@ -14,10 +13,11 @@ export const AppNavigation = () => {
         screenOptions={{
           headerShown: false,
           drawerActiveTintColor: '#303f9f',
-          drawerLabelStyle : {
-            fontFamily: 'rb-bold'
-          }
-        }}>
+          drawerLabelStyle: {
+            fontFamily: 'rb-bold',
+          },
+        }}
+      >
         <MainNavigatorDrawer.Screen
           name='TabsOfPosts'
           component={TabsForPosts}
